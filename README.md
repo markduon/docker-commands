@@ -57,3 +57,43 @@ This command should be run in the last RUN command.
 python3 -m flask run
 ``` -->
 
+# Remove docker completely from your system
+
+To completely uninstall Docker from your Ubuntu system, follow these steps:
+
+1. **Stop and remove all Docker containers**:
+   ```bash
+   docker stop $(docker ps -a -q)
+   docker rm $(docker ps -a -q)
+   ```
+
+2. **Remove all Docker images**:
+   ```bash
+   docker rmi $(docker images -a -q)
+   ```
+
+3. **Remove all Docker networks**:
+   ```bash
+   docker network prune
+   ```
+
+4. **Remove Docker volumes and cache**:
+   ```bash
+   docker system prune -a
+   ```
+
+5. **Uninstall Docker packages**:
+   ```bash
+   sudo apt remove docker-* --auto-remove
+   ```
+
+6. **Remove leftover Docker files**:
+   ```bash
+   sudo rm -rf /var/lib/docker
+   sudo rm -rf /var/run/docker.sock
+   ```
+
+7. **Remove the Docker group**:
+   ```bash
+   sudo groupdel docker
+   ```
